@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Store</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav id="navbar" class="">
+        <div class="nav-container">
+            <a href="#home" class="logo-link">
+                <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#fff;stop-opacity:1"></stop>
+                            <stop offset="100%" style="stop-color:#ff3366;stop-opacity:1"></stop>
+                        </linearGradient>
+                    </defs>
+                    <polygon points="50,10 20,50 50,90 80,50" fill="none" stroke="url(#logoGrad)" stroke-width="3"></polygon>
+                    <circle cx="50" cy="50" r="5" fill="url(#logoGrad)"></circle>
+                </svg>
+                <span class="logo-text">NOIR TECHNOLOGY</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#collections" class="nav-link">Collections</a></li>
+                <li><a href="#shopping-cart" class="nav-cta">Shopping Cart</a></li>
+            </ul>
+            <div class="menu-toggle " id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+    <div class="mobile-nav " id="mobileNav">
+        <ul class="mobile-nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#collections">Collections</a></li>
+            <li><a href="#shopping-cart">Shopping Cart</a></li>
+        </ul>
+    </div>
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="hero-container">
+            <div class="hero-left">
+                <div class="hero-badge">New Collection 2025</div>
+                <h1 class="hero-title">
+                    <span class="line"><span>Redefine</span></span>
+                    <span class="line"><span>Your <span class="accent">Style</span></span></span>
+                    <span class="line"><span>Revolution</span></span>
+                </h1>
+                <p class="hero-description">Discover our avant-garde collection where high standard meets technology culture. Each piece tells a story of rebellion, elegance, and innovation.</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Exclusive Pieces</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">48H</span>
+                        <span class="stat-label">Fast Delivery</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Sustainable</span>
+                    </div>
+                </div>
+                <div class="cta-group">
+                    <a href="#collections" class="cta-button primary" style="display:inline-block;padding:14px 28px;line-height:1;position:relative;z-index:20;box-sizing:border-box">Explore Collection</a>
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="hero-image-wrapper">
+                    <div class="hero-carousel">
+                        <div class="carousel-slide active">
+                            <img src="/images/computer-manufacturing.jpg" alt="Computer Manufacturing"/>
+                        </div>
+                        <div class="carousel-slide ">
+                            <img src="/images/phone-manufacturing.jpg" alt="Phone Manufacturing"/>
+                        </div>
+                        <div class="carousel-slide ">
+                            <img src="/images/qpc-manufacturing.jpg" alt="QPC Manufacturing"/>
+                        </div>
+                        <div class="carousel-overlay"></div>
+                        <div class="carousel-indicators">
+                            <span class="indicator active"></span>
+                            <span class="indicator "></span>
+                            <span class="indicator "></span>
+                        </div>
+                    </div>
+                    <div class="floating-tags">
+                        <div class="tag">Limited Edition</div>
+                        <div class="tag">Handcrafted</div>
+                        <div class="tag">Premium Quality</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span></span>
+        </div>
+    </section>
+    <section class="collections" id="collections">
+        <div class="section-header">
+            <h2 class="section-title">Latest Collections</h2>
+            <p class="section-subtitle">Discover our curated selection</p>
+        </div>
+        <div class="category-tabs">
+            <button class="tab-btn active">All</button>
+            <button class="tab-btn ">Phones</button>
+            <button class="tab-btn ">Computers</button>
+        </div>
+        <div class="grid" id="collectionsGrid">
+            <div class="collection-card" data-category="computers">
+                <div class="collection-thumbnail">
+                    <img src="/images/imac.jpg" alt="IMAC"/>
+                </div>
+                <div class="card-content">
+                    <span class="card-badge">New Arrival</span>
+                    <h3 class="card-title">IMAC</h3>
+                    <p class="card-subtitle">Apple personal computer</p>
+                    <p class="card-price">$<!-- -->999</p>
+                    <button class="add-to-cart-btn" data-id="imac" data-name="IMAC" data-price="999" data-image="/images/imac.jpg" style="margin-top:10px;padding:8px 16px;background-color:#ff3366;color:#fff;border:none;border-radius:4px;cursor:pointer">Add to Cart</button>
+                </div>
+            </div>
+            <div class="collection-card" data-category="computers">
+                <div class="collection-thumbnail">
+                    <img src="/images/dell.jfif" alt="DELL"/>
+                </div>
+                <div class="card-content">
+                    <span class="card-badge">Limited</span>
+                    <h3 class="card-title">DELL</h3>
+                    <p class="card-subtitle">dell personal computer</p>
+                    <p class="card-price">$<!-- -->499</p>
+                    <button class="add-to-cart-btn" data-id="dell" data-name="DELL" data-price="499" data-image="/images/dell.jfif" style="margin-top:10px;padding:8px 16px;background-color:#ff3366;color:#fff;border:none;border-radius:4px;cursor:pointer">Add to Cart</button>
+                </div>
+            </div>
+            <div class="collection-card" data-category="computers">
+                <div class="collection-thumbnail">
+                    <img src="/images/raspberry-pi.webp" alt="RASPBERRY PI"/>
+                </div>
+                <div class="card-content">
+                    <span class="card-badge">Bestseller</span>
+                    <h3 class="card-title">RASPBERRY PI</h3>
+                    <p class="card-subtitle">Raspberry Pi single-board computer</p>
+                    <p class="card-price">$<!-- -->399</p>
+                    <button class="add-to-cart-btn" data-id="raspberry-pi" data-name="RASPBERRY PI" data-price="399" data-image="/images/raspberry-pi.webp" style="margin-top:10px;padding:8px 16px;background-color:#ff3366;color:#fff;border:none;border-radius:4px;cursor:pointer">Add to Cart</button>
+                </div>
+            </div>
+            <div class="collection-card" data-category="computers">
+                <div class="collection-thumbnail">
+                    <img src="/images/qpc.jpg" alt="FRAUD COMPUTER"/>
+                </div>
+                <div class="card-content">
+                    <span class="card-badge">Trending</span>
+                    <h3 class="card-title">FRAUD COMPUTER</h3>
+                    <p class="card-subtitle">A computer that looks like it could work</p>
+                    <p class="card-price">$<!-- -->999999</p>
+                    <button class="add-to-cart-btn" data-id="qpc" data-name="FRAUD COMPUTER" data-price="999999" data-image="/images/qpc.jpg" style="margin-top:10px;padding:8px 16px;background-color:#ff3366;color:#fff;border:none;border-radius:4px;cursor:pointer">Add to Cart</button>
+                </div>
+            </div>
+            <div class="collection-card" data-category="phones">
+                <div class="collection-thumbnail">
+                    <img src="/images/huawei.jpg" alt="HUAWEI"/>
+                </div>
+                <div class="card-content">
+                    <span class="card-badge">Pre-Order</span>
+                    <h3 class="card-title">HUAWEI</h3>
+                    <p class="card-subtitle">Huawei smartphone</p>
+                    <p class="card-price">$<!-- -->249</p>
+                    <button class="add-to-cart-btn" data-id="huawei" data-name="HUAWEI" data-price="249" data-image="/images/huawei.jpg" style="margin-top:10px;padding:8px 16px;background-color:#ff3366;color:#fff;border:none;border-radius:4px;cursor:pointer">Add to Cart</button>
+                </div>
+            </div>
+            <div class="collection-card" data-category="phones">
+                <div class="collection-thumbnail">
+                    <img src="/images/samsung.jpg" alt="SAMSUNG"/>
+                </div>
+                <div class="card-content">
+                    <span class="card-badge">Hot</span>
+                    <h3 class="card-title">SAMSUNG</h3>
+                    <p class="card-subtitle">Samsung smartphone</p>
+                    <p class="card-price">$<!-- -->199</p>
+                    <button class="add-to-cart-btn" data-id="samsung" data-name="SAMSUNG" data-price="199" data-image="/images/samsung.jpg" style="margin-top:10px;padding:8px 16px;background-color:#ff3366;color:#fff;border:none;border-radius:4px;cursor:pointer">Add to Cart</button>
+                </div>
+            </div>
+            <div class="collection-card" data-category="phones">
+                <div class="collection-thumbnail">
+                    <img src="/images/nokia.png" alt="NOKIA"/>
+                </div>
+                <div class="card-content">
+                    <span class="card-badge">Exclusive</span>
+                    <h3 class="card-title">NOKIA</h3>
+                    <p class="card-subtitle">Art Meets Fashion</p>
+                    <p class="card-price">$<!-- -->99</p>
+                    <button class="add-to-cart-btn" data-id="nokia" data-name="NOKIA" data-price="99" data-image="/images/nokia.png" style="margin-top:10px;padding:8px 16px;background-color:#ff3366;color:#fff;border:none;border-radius:4px;cursor:pointer">Add to Cart</button>
+                </div>
+            </div>
+            <div class="collection-card" data-category="phones">
+                <div class="collection-thumbnail">
+                    <img src="/images/iphone.jfif" alt="IPHONE"/>
+                </div>
+                <div class="card-content">
+                    <span class="card-badge">Essentials</span>
+                    <h3 class="card-title">IPHONE</h3>
+                    <p class="card-subtitle">Timeless Accessories</p>
+                    <p class="card-price">$<!-- -->89</p>
+                    <button class="add-to-cart-btn" data-id="iphone" data-name="IPHONE" data-price="89" data-image="/images/iphone.jfif" style="margin-top:10px;padding:8px 16px;background-color:#ff3366;color:#fff;border:none;border-radius:4px;cursor:pointer">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="shopping-cart" id="shopping-cart" style="padding:40px 20px;background-color:#f5f5f5;min-height:400px">
+        <div style="max-width:1200px;margin:0 auto">
+            <h2 class="section-title" style="color:#000;margin-bottom:30px">Shopping Cart</h2>
+            <div id="cart-container">
+                <div id="empty-cart" style="text-align:center;padding:60px 20px;background-color:#fff;border-radius:8px">
+                    <p style="color:#666;font-size:18px">Your cart is empty</p>
+                    <a href="#collections" style="margin-top:20px;display:inline-block;padding:10px 20px;background-color:#ff3366;color:#fff;text-decoration:none;border-radius:4px">Continue Shopping</a>
+                </div>
+                <div id="cart-items" style="display:none;background-color:#fff;border-radius:8px;padding:20px;margin-bottom:20px">
+                    <!-- Cart items will be inserted here -->
+                </div>
+                <div id="cart-total" style="display:none;background-color:#fff;border-radius:8px;padding:20px;text-align:right">
+                    <h3 style="margin:0;color:#000">Total: $<span id="total-amount">0</span></h3>
+                    <button id="checkout-btn" style="margin-top:15px;padding:12px 30px;background-color:#ff3366;color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:16px">Checkout</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <button aria-label="Go to shopping cart" style="position:fixed;left:12px;top:50%;transform:translateY(-50%);padding:12px 18px;border-radius:9999px;background:linear-gradient(135deg, #ff3366, #ff6690);color:#fff;border:none;box-shadow:0 8px 24px rgba(0,0,0,0.6);z-index:2000;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-weight:700;font-size:16px">
+        <span role="img" aria-label="cart">🛒</span>
+    </button>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>NOIR TECHNOLOGY</h3>
+                <p>Redefining fashion with bold designs, sustainable practices, and uncompromising quality. Join us in creating the future of style.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">f</a>
+                    <a href="#" class="social-link">t</a>
+                    <a href="#" class="social-link">i</a>
+                    <a href="#" class="social-link">p</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="#collections">All Products</a></li>
+                    <li><a href="#collections">Phones</a></li>
+                    <li><a href="#collections">Computers</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                    <li><a href="#">Sustainability</a></li>
+                    <li><a href="#">Terms</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 NOIR TECHNOLOGY. All rights reserved.</p>
+            <div class="payment-methods">
+                <div class="payment-icon">VISA</div>
+                <div class="payment-icon">MC</div>
+                <div class="payment-icon">AMEX</div>
+                <div class="payment-icon">PAY</div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>
