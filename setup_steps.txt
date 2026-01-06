@@ -1,0 +1,32 @@
+E-commerce Spring Boot Setup Steps:
+
+1. Project Structure:
+   - HTML files: Place in src/main/resources/templates/
+   - CSS files: Place in src/main/resources/static/css/
+   - JS files: Place in src/main/resources/static/js/
+   - Static images: Place in src/main/resources/static/images/
+
+2. MongoDB Connection:
+   - Added spring-boot-starter-data-mongodb dependency in pom.xml
+   - Configured connection URI in application.properties: mongodb://localhost:27017/ecommerce
+   - Make sure MongoDB is running locally on port 27017
+   - Database name is 'ecommerce'
+
+3. Next Steps for E-commerce:
+   - Create Product model class with @Document annotation
+   - Create ProductRepository interface extending MongoRepository
+   - Create ProductService for business logic
+   - Update Controller to handle e-commerce endpoints (products, cart, orders)
+   - Add Thymeleaf dependency if using server-side rendering for HTML templates
+   - Add security dependency for user authentication
+
+4. Running the Application:
+   - Use mvn spring-boot:run or run from IDE
+   - Access REST endpoints at http://localhost:8080/
+   - Static files served from /static/ path
+   - Templates rendered via controller methods
+
+5. Database Setup:
+   - Install MongoDB locally or use cloud service
+   - Update URI in application.properties if using different host/port/database
+   - Use MongoDB Compass for database management
