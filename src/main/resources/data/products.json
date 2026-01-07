@@ -1,0 +1,66 @@
+[
+  {
+    "name": "iPhone 15",
+    "description": "Latest iPhone with advanced features",
+    "price": 999.99,
+    "stock": 50,
+    "categoryName": "Smartphones",
+    "imageUrl": "/images/iphone.jfif"
+  },
+  {
+    "name": "MacBook Pro",
+    "description": "Powerful laptop for professionals",
+    "price": 1999.99,
+    "stock": 25,
+    "categoryName": "Laptops",
+    "imageUrl": "/images/imac.jpg"
+  },
+  {
+    "name": "Dell XPS 13",
+    "description": "Ultra-portable Windows laptop",
+    "price": 1299.99,
+    "stock": 30,
+    "categoryName": "Laptops",
+    "imageUrl": "/images/dell.jfif"
+  },
+  {
+    "name": "Samsung Galaxy S24",
+    "description": "Android flagship smartphone",
+    "price": 899.99,
+    "stock": 40,
+    "categoryName": "Smartphones",
+    "imageUrl": "/images/samsung.jpg"
+  },
+  {
+    "name": "Huawei P50",
+    "description": "Premium Android smartphone",
+    "price": 799.99,
+    "stock": 35,
+    "categoryName": "Smartphones",
+    "imageUrl": "/images/huawei.jpg"
+  },
+  {
+    "name": "Raspberry Pi 4",
+    "description": "Single-board computer for projects",
+    "price": 149.99,
+    "stock": 100,
+    "categoryName": "Computers",
+    "imageUrl": "/images/raspberry-pi.webp"
+  },
+  {
+    "name": "Nokia 3310",
+    "description": "Classic durable phone",
+    "price": 49.99,
+    "stock": 75,
+    "categoryName": "Feature Phones",
+    "imageUrl": "/images/nokia.png"
+  },
+  {
+    "name": "QPC Manufacturing Kit",
+    "description": "DIY computer building kit",
+    "price": 299.99,
+    "stock": 20,
+    "categoryName": "Computers",
+    "imageUrl": "/images/qpc.jpg"
+  }
+]

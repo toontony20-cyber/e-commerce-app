@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Methods - Noir Technology</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav id="navbar" class="">
+        <div class="nav-container">
+            <a href="/" class="logo-link">
+                <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#fff;stop-opacity:1"></stop>
+                            <stop offset="100%" style="stop-color:#ff3366;stop-opacity:1"></stop>
+                        </linearGradient>
+                    </defs>
+                    <polygon points="50,10 20,50 50,90 80,50" fill="none" stroke="url(#logoGrad)" stroke-width="3"></polygon>
+                    <circle cx="50" cy="50" r="5" fill="url(#logoGrad)"></circle>
+                </svg>
+                <span class="logo-text">NOIR TECHNOLOGY</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/#collections" class="nav-link">Collections</a></li>
+                <li><a href="/#shopping-cart" class="nav-cta">Shopping Cart</a></li>
+            </ul>
+            <div class="menu-toggle " id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="payment-section" style="padding:120px 50px 100px;max-width:1400px;margin:0 auto">
+        <div class="section-header" style="text-align:center;margin-bottom:60px">
+            <h2 class="section-title">Choose Payment Method</h2>
+            <p class="section-subtitle">Complete your purchase securely</p>
+        </div>
+
+        <div class="payment-container" style="max-width:800px;margin:0 auto">
+            <div class="order-summary" style="background:#f8f9fa;padding:30px;border-radius:12px;margin-bottom:40px">
+                <h3 style="margin-bottom:20px;color:#000">Order Summary</h3>
+                <div id="order-details" style="margin-bottom:20px">
+                    <p id="order-id" style="color:#666;margin:5px 0">Order ID: <span id="orderIdDisplay">Loading...</span></p>
+                    <p id="order-total" style="font-size:24px;font-weight:bold;color:#ff3366;margin:10px 0">
+                        Total: $<span id="totalAmountDisplay">0.00</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="payment-methods">
+                <div class="payment-method" id="paypal-method" style="border:2px solid #0070ba;border-radius:12px;padding:30px;margin-bottom:20px;cursor:pointer;transition:all 0.3s ease;background:#fff">
+                    <div class="payment-header" style="display:flex;align-items:center;margin-bottom:20px">
+                        <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_100x26.png" alt="PayPal" style="height:26px;margin-right:15px">
+                        <h4 style="margin:0;color:#0070ba">PayPal</h4>
+                    </div>
+                    <p style="color:#666;margin-bottom:20px">Pay securely with your PayPal account or credit card.</p>
+                    <div id="paypal-button-container"></div>
+                </div>
+
+                <div class="payment-method" id="card-method" style="border:2px solid #ddd;border-radius:12px;padding:30px;margin-bottom:20px;background:#fff">
+                    <div class="payment-header" style="display:flex;align-items:center;margin-bottom:20px">
+                        <div style="width:40px;height:26px;background:#000;border-radius:4px;margin-right:15px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:bold">💳</div>
+                        <h4 style="margin:0;color:#000">Credit/Debit Card</h4>
+                    </div>
+                    <p style="color:#666;margin-bottom:20px">Pay with Visa, Mastercard, American Express, or other cards.</p>
+                    <div class="card-logos" style="display:flex;gap:10px;margin-bottom:20px">
+                        <div style="width:40px;height:25px;background:#1a1f71;border-radius:3px;color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:bold">VISA</div>
+                        <div style="width:40px;height:25px;background:#eb001b;border-radius:3px;color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:bold">MC</div>
+                        <div style="width:40px;height:25px;background:#006fcf;border-radius:3px;color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:bold">AMEX</div>
+                    </div>
+                    <button class="card-btn" style="background:#666;color:#fff;border:none;padding:12px 30px;border-radius:25px;font-size:16px;cursor:pointer;width:100%;opacity:0.6" disabled>
+                        Coming Soon
+                    </button>
+                </div>
+
+                <div class="payment-method" id="crypto-method" style="border:2px solid #ddd;border-radius:12px;padding:30px;margin-bottom:20px;background:#fff">
+                    <div class="payment-header" style="display:flex;align-items:center;margin-bottom:20px">
+                        <div style="width:40px;height:26px;background:#f7931a;border-radius:50%;margin-right:15px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:bold">₿</div>
+                        <h4 style="margin:0;color:#000">Cryptocurrency</h4>
+                    </div>
+                    <p style="color:#666;margin-bottom:20px">Pay with Bitcoin, Ethereum, or other cryptocurrencies.</p>
+                    <button class="crypto-btn" style="background:#666;color:#fff;border:none;padding:12px 30px;border-radius:25px;font-size:16px;cursor:pointer;width:100%;opacity:0.6" disabled>
+                        Coming Soon
+                    </button>
+                </div>
+            </div>
+
+            <div class="payment-actions" style="text-align:center;margin-top:40px">
+                <button onclick="window.location.href='/'" style="background:#666;color:#fff;border:none;padding:12px 30px;border-radius:25px;font-size:16px;cursor:pointer;margin-right:15px">
+                    Cancel
+                </button>
+                <button onclick="window.location.href='/#collections'" style="background:#ff3366;color:#fff;border:none;padding:12px 30px;border-radius:25px;font-size:16px;cursor:pointer">
+                    Continue Shopping
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>NOIR TECHNOLOGY</h3>
+                <p>Redefining fashion with bold designs, sustainable practices, and uncompromising quality. Join us in creating the future of style.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">f</a>
+                    <a href="#" class="social-link">t</a>
+                    <a href="#" class="social-link">i</a>
+                    <a href="#" class="social-link">p</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="/#collections">All Products</a></li>
+                    <li><a href="/#collections">Phones</a></li>
+                    <li><a href="/#collections">Computers</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                    <li><a href="#">Sustainability</a></li>
+                    <li><a href="#">Terms</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 NOIR TECHNOLOGY. All rights reserved.</p>
+            <div class="payment-methods">
+                <div class="payment-icon">VISA</div>
+                <div class="payment-icon">MC</div>
+                <div class="payment-icon">AMEX</div>
+                <div class="payment-icon">PAY</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Get URL parameters
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            const results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Global variables
+        let orderId = '';
+        let totalAmount = 0;
+        let fromOrder = false;
+        let paypalClientId = '';
+
+        // Load PayPal client ID and initialize SDK
+        fetch('/api/paypal/client-id')
+            .then(response => response.json())
+            .then(data => {
+                paypalClientId = data.clientId;
+
+                // Dynamically load PayPal SDK
+                const script = document.createElement('script');
+                script.src = `https://www.paypal.com/sdk/js?client-id=${paypalClientId}&currency=USD&components=buttons`;
+                script.onload = function() {
+                    // Initialize PayPal buttons after SDK loads
+                    initPayPalButtons();
+                };
+                document.head.appendChild(script);
+            })
+            .catch(error => {
+                console.error('Error loading PayPal client ID:', error);
+            });
+
+        // Load order details from URL parameters
+        document.addEventListener('DOMContentLoaded', function() {
+            orderId = getUrlParameter('orderId');
+            totalAmount = parseFloat(getUrlParameter('totalAmount')) || 0;
+            fromOrder = getUrlParameter('fromOrder') === 'true';
+
+            if (orderId) {
+                document.getElementById('orderIdDisplay').textContent = orderId;
+            }
+
+            if (totalAmount > 0) {
+                document.getElementById('totalAmountDisplay').textContent = totalAmount.toFixed(2);
+            }
+        });
+
+        // Initialize PayPal Buttons
+        function initPayPalButtons() {
+            paypal.Buttons({
+                createOrder: function(data, actions) {
+                    // Create the order on PayPal
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                value: totalAmount.toFixed(2),
+                                currency_code: 'USD'
+                            },
+                            description: `Order #${orderId}`,
+                            reference_id: orderId
+                        }]
+                    });
+                },
+                onApprove: function(data, actions) {
+                    // Capture the funds from the transaction
+                    return actions.order.capture().then(function(details) {
+                        // Payment successful
+                        console.log('Payment completed:', details);
+
+                        // Update order status to completed
+                        updateOrderStatus(orderId, 'completed', 'PayPal', details.id);
+
+                        // Show success message
+                        alert('Payment successful! Your order has been completed.');
+
+                        // Redirect to order history
+                        window.location.href = '/orders';
+                    });
+                },
+                onError: function(err) {
+                    console.error('PayPal payment error:', err);
+                    alert('Payment failed. Please try again.');
+                }
+            }).render('#paypal-button-container');
+        }
+
+        // Update order status after successful payment
+        function updateOrderStatus(orderId, status, paymentMethod, transactionId) {
+            fetch(`/api/orders/${orderId}/status`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                credentials: 'same-origin',
+                body: JSON.stringify({
+                    status: status,
+                    paymentMethod: paymentMethod,
+                    transactionId: transactionId
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    console.log('Order status updated successfully');
+                } else {
+                    console.error('Failed to update order status:', data.error);
+                }
+            })
+            .catch(error => {
+                console.error('Error updating order status:', error);
+            });
+        }
+    </script>
+</body>
+</html></body>

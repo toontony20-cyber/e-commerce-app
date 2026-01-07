@@ -1,0 +1,30 @@
+[
+  {
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "password": "[PASSWORD_HASHED_IN_PRODUCTION]",
+    "address": "123 Main St, New York, NY",
+    "phone": "+1-555-0123"
+  },
+  {
+    "name": "Jane Smith",
+    "email": "jane.smith@example.com",
+    "password": "[PASSWORD_HASHED_IN_PRODUCTION]",
+    "address": "456 Oak Ave, Los Angeles, CA",
+    "phone": "+1-555-0124"
+  },
+  {
+    "name": "Bob Johnson",
+    "email": "bob.johnson@example.com",
+    "password": "[PASSWORD_HASHED_IN_PRODUCTION]",
+    "address": "789 Pine Rd, Chicago, IL",
+    "phone": "+1-555-0125"
+  },
+  {
+    "name": "Alice Brown",
+    "email": "alice.brown@example.com",
+    "password": "[PASSWORD_HASHED_IN_PRODUCTION]",
+    "address": "321 Elm St, Houston, TX",
+    "phone": "+1-555-0126"
+  }
+]

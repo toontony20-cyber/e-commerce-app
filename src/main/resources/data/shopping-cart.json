@@ -1,0 +1,12 @@
+[
+  {
+    "userEmail": "alice.brown@example.com",
+    "productName": "Nokia 3310",
+    "quantity": 2
+  },
+  {
+    "userEmail": "alice.brown@example.com",
+    "productName": "Raspberry Pi 4",
+    "quantity": 1
+  }
+]

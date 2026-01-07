@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order History - Noir Technology</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav id="navbar" class="">
+        <div class="nav-container">
+            <a href="/" class="logo-link">
+                <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#fff;stop-opacity:1"></stop>
+                            <stop offset="100%" style="stop-color:#ff3366;stop-opacity:1"></stop>
+                        </linearGradient>
+                    </defs>
+                    <polygon points="50,10 20,50 50,90 80,50" fill="none" stroke="url(#logoGrad)" stroke-width="3"></polygon>
+                    <circle cx="50" cy="50" r="5" fill="url(#logoGrad)"></circle>
+                </svg>
+                <span class="logo-text">NOIR TECHNOLOGY</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/#collections" class="nav-link">Collections</a></li>
+                <li><a href="/#shopping-cart" class="nav-cta">Shopping Cart</a></li>
+                <li id="login-section" style="display: none;">
+                    <a href="/oauth2/authorization/google" class="nav-cta google-login-btn" style="background: #4285f4; margin-left: 10px;">Login with Google</a>
+                </li>
+                <li id="user-section" style="display: none;">
+                    <div class="user-profile" style="display: flex; align-items: center; gap: 10px; color: white;">
+                        <img id="user-avatar" src="" alt="Profile" style="width: 32px; height: 32px; border-radius: 50%; border: 2px solid white;">
+                        <span id="user-name" style="font-size: 14px; font-weight: 500;"></span>
+                        <a href="/logout" class="nav-cta" style="background: #dc3545; margin-left: 10px; padding: 8px 16px; font-size: 12px;">Logout</a>
+                    </div>
+                </li>
+            </ul>
+            <div class="menu-toggle " id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="orders-history" style="padding:120px 50px 100px;max-width:1400px;margin:0 auto">
+        <div class="section-header" style="text-align:center;margin-bottom:60px">
+            <h2 class="section-title">Order History</h2>
+            <p class="section-subtitle">Track your purchases and order status</p>
+        </div>
+
+        <div class="orders-container">
+            <div id="loading-orders" style="text-align:center;padding:40px">
+                <p>Loading your orders...</p>
+            </div>
+
+            <div id="no-orders" style="text-align:center;padding:60px;display:none">
+                <p style="color:#666;font-size:18px;margin-bottom:20px">You haven't placed any orders yet.</p>
+                <a href="/#collections" style="display:inline-block;padding:12px 24px;background:#ff3366;color:#fff;text-decoration:none;border-radius:25px">
+                    Start Shopping
+                </a>
+            </div>
+
+            <div id="orders-list" style="display:none">
+                <!-- Orders will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>NOIR TECHNOLOGY</h3>
+                <p>Redefining fashion with bold designs, sustainable practices, and uncompromising quality. Join us in creating the future of style.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">f</a>
+                    <a href="#" class="social-link">t</a>
+                    <a href="#" class="social-link">i</a>
+                    <a href="#" class="social-link">p</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="/#collections">All Products</a></li>
+                    <li><a href="/#collections">Phones</a></li>
+                    <li><a href="/#collections">Computers</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                    <li><a href="#">Sustainability</a></li>
+                    <li><a href="#">Terms</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 NOIR TECHNOLOGY. All rights reserved.</p>
+            <div class="payment-methods">
+                <div class="payment-icon">VISA</div>
+                <div class="payment-icon">MC</div>
+                <div class="payment-icon">AMEX</div>
+                <div class="payment-icon">PAY</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Get URL parameters
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            const results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Format date
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+
+        // Load orders on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check authentication first
+            fetch('/api/auth/status')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.authenticated) {
+                        // Show user profile section
+                        document.getElementById('login-section').style.display = 'none';
+                        document.getElementById('user-section').style.display = 'block';
+
+                        // Update user info
+                        document.getElementById('user-name').textContent = data.name || 'User';
+                        document.getElementById('user-avatar').src = data.imageUrl || '/images/default-avatar.png';
+
+                        // Load user orders
+                        loadUserOrders();
+                    } else {
+                        // Show login section and hide loading
+                        document.getElementById('login-section').style.display = 'block';
+                        document.getElementById('user-section').style.display = 'none';
+                        document.getElementById('loading-orders').style.display = 'none';
+                        document.getElementById('no-orders').style.display = 'block';
+
+                        alert('Please login to view your order history.');
+                        window.location.href = '/';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error checking auth status:', error);
+                    document.getElementById('loading-orders').style.display = 'none';
+                    document.getElementById('no-orders').style.display = 'block';
+                });
+        });
+
+        // Load user orders
+        function loadUserOrders() {
+            fetch('/api/user/orders', {
+                credentials: 'same-origin'
+            })
+            .then(response => {
+                if (response.status === 401) {
+                    alert('Please login to view your orders.');
+                    window.location.href = '/';
+                    return;
+                }
+                return response.json();
+            })
+            .then(data => {
+                document.getElementById('loading-orders').style.display = 'none';
+
+                if (data.error) {
+                    console.error('Error loading orders:', data.error);
+                    document.getElementById('no-orders').style.display = 'block';
+                    return;
+                }
+
+                const orders = data.orders || [];
+                renderOrders(orders);
+            })
+            .catch(error => {
+                console.error('Error loading orders:', error);
+                document.getElementById('loading-orders').style.display = 'none';
+                document.getElementById('no-orders').style.display = 'block';
+            });
+        }
+
+        // Render orders
+        function renderOrders(orders) {
+            const ordersList = document.getElementById('orders-list');
+
+            if (orders.length === 0) {
+                document.getElementById('no-orders').style.display = 'block';
+                return;
+            }
+
+            ordersList.style.display = 'block';
+
+            // Group orders by status
+            const pendingOrders = orders.filter(order => order.status === 'pending');
+            const completedOrders = orders.filter(order => order.status !== 'pending');
+
+            let html = '';
+
+            // Pending Orders Section
+            if (pendingOrders.length > 0) {
+                html += `
+                    <div class="orders-section">
+                        <h3 style="color:#ff3366;margin-bottom:20px;font-size:24px">Pending Orders</h3>
+                        ${pendingOrders.map(order => renderOrderCard(order)).join('')}
+                    </div>
+                `;
+            }
+
+            // Completed Orders Section
+            if (completedOrders.length > 0) {
+                html += `
+                    <div class="orders-section" style="margin-top:60px">
+                        <h3 style="color:#28a745;margin-bottom:20px;font-size:24px">Order History</h3>
+                        ${completedOrders.map(order => renderOrderCard(order)).join('')}
+                    </div>
+                `;
+            }
+
+            ordersList.innerHTML = html;
+        }
+
+        // Render individual order card
+        function renderOrderCard(order) {
+            const statusColor = order.status === 'pending' ? '#ff3366' : '#28a745';
+            const itemsHtml = order.items.map(item => `
+                <div style="display:flex;align-items:center;padding:10px 0;border-bottom:1px solid #eee">
+                    <div style="flex:1">
+                        <strong>${item.productName || 'Product'}</strong>
+                        <br><span style="color:#666">Qty: ${item.quantity} × $${item.price.toFixed(2)}</span>
+                    </div>
+                    <div style="font-weight:bold">$${(item.quantity * item.price).toFixed(2)}</div>
+                </div>
+            `).join('');
+
+            return `
+                <div class="order-card" style="background:#fff;border-radius:12px;padding:30px;margin-bottom:20px;box-shadow:0 4px 12px rgba(0,0,0,0.1)">
+                    <div class="order-header" style="display:flex;justify-content:space-between;align-items:start;margin-bottom:20px">
+                        <div>
+                            <h4 style="margin:0 0 5px 0;color:#000">Order #${order.id.substring(0, 8).toUpperCase()}</h4>
+                            <p style="margin:0;color:#666">${formatDate(order.orderDate)}</p>
+                        </div>
+                        <div class="order-status" style="background:${statusColor};color:#fff;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:bold">
+                            ${order.status.toUpperCase()}
+                        </div>
+                    </div>
+
+                    <div class="order-items" style="margin-bottom:20px">
+                        <h5 style="margin-bottom:10px;color:#000">Items Ordered:</h5>
+                        ${itemsHtml}
+                    </div>
+
+                    <div class="order-footer" style="display:flex;justify-content:space-between;align-items:center;border-top:2px solid #eee;padding-top:20px">
+                        <div>
+                            <strong>Total: $${order.totalAmount.toFixed(2)}</strong>
+                            <br><span style="color:#666">Payment: ${order.paymentMethod || 'Pending'}</span>
+                        </div>
+                        <div style="text-align:right">
+                            <small style="color:#666">Shipping to:<br>${order.shippingAddress || 'Default Address'}</small>
+                            ${order.status === 'pending' ? `<button onclick="checkoutOrder('${order.id}', ${order.totalAmount})" class="checkout-order-btn" style="margin-top:10px;padding:8px 16px;background:#ff3366;color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:14px">Complete Payment</button>` : ''}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Checkout existing order
+        function checkoutOrder(orderId, totalAmount) {
+            // Redirect to payment page with order details
+            window.location.href = `/payment?orderId=${orderId}&totalAmount=${totalAmount}&fromOrder=true`;
+        }
+    </script>
+</body>
+</html>

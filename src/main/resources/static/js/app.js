@@ -1,9 +1,20 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log('E-commerce app loaded');
 
+    // Global variables
+    let allProducts = [];
+    let allCategories = [];
+
+    // Check authentication status and update UI
+    checkAuthStatus();
+
+    // Load categories first, then products
+    loadCategories().then(() => {
+        loadProducts();
+    });
+
     // Collection filtering functionality
     const categoryTabs = document.querySelector('.category-tabs');
-    const collectionCards = document.querySelectorAll('.collection-card');
 
     if (categoryTabs) {
         categoryTabs.addEventListener('click', function(e) {
@@ -15,14 +26,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Add active class to clicked button
                 e.target.classList.add('active');
 
-                const category = e.target.textContent.toLowerCase().trim();
+                const categoryName = e.target.textContent.trim();
 
+                const collectionCards = document.querySelectorAll('.collection-card');
                 collectionCards.forEach(card => {
                     const cardCategory = card.getAttribute('data-category');
 
-                    if (category === 'all') {
+                    if (categoryName === 'All') {
                         card.style.display = 'block';
-                    } else if (cardCategory === category) {
+                    } else if (cardCategory === categoryName) {
                         card.style.display = 'block';
                     } else {
                         card.style.display = 'none';
@@ -95,28 +107,102 @@ document.addEventListener('DOMContentLoaded', function() {
         showSlide(currentSlide);
     }, 5000);
 
-    // Example function to load products
-    function loadProducts() {
-        fetch('/api/products')
+    // Load categories from API
+    function loadCategories() {
+        return fetch('/api/categories')
             .then(response => response.json())
-            .then(products => {
-                const productGrid = document.querySelector('.product-grid');
-                if (productGrid) {
-                    productGrid.innerHTML = '';
+            .then(categories => {
+                allCategories = categories;
+                renderCategoryTabs(categories);
+                return categories; // Return categories for chaining
+            })
+            .catch(error => {
+                console.error('Error loading categories:', error);
+                return []; // Return empty array on error
+            });
+    }
 
-                    products.forEach(product => {
-                        const productCard = document.createElement('div');
-                        productCard.className = 'product-card';
-                        productCard.innerHTML = `
-                            <h3>${product.name}</h3>
-                            <p>$${product.price}</p>
-                            <button onclick="addToCart('${product.id}')">Add to Cart</button>
-                        `;
-                        productGrid.appendChild(productCard);
-                    });
-                }
+    // Render category tabs
+    function renderCategoryTabs(categories) {
+        const categoryTabs = document.querySelector('.category-tabs');
+        if (!categoryTabs) return;
+
+        // Clear existing tabs
+        categoryTabs.innerHTML = '';
+
+        // Add "All" tab
+        const allTab = document.createElement('button');
+        allTab.className = 'tab-btn active';
+        allTab.textContent = 'All';
+        categoryTabs.appendChild(allTab);
+
+        // Add category tabs
+        categories.forEach(category => {
+            console.log('Creating button for category:', category.name);
+            const tabBtn = document.createElement('button');
+            tabBtn.className = 'tab-btn';
+            tabBtn.textContent = category.name;
+            categoryTabs.appendChild(tabBtn);
+        });
+    }
+
+    // Load products from API and render them
+    function loadProducts() {
+        console.log('Loading products...');
+        console.log('Available categories:', allCategories);
+        fetch('/api/products')
+            .then(response => {
+                console.log('Products response status:', response.status);
+                return response.json();
+            })
+            .then(products => {
+                console.log('Loaded products:', products);
+                allProducts = products;
+                renderProductGrid(products);
             })
             .catch(error => console.error('Error loading products:', error));
+    }
+
+    // Render product grid
+    function renderProductGrid(products) {
+        const collectionsGrid = document.getElementById('collectionsGrid');
+        if (!collectionsGrid) return;
+
+        collectionsGrid.innerHTML = '';
+
+        products.forEach(product => {
+            // Find category name for this product
+            const category = allCategories.find(cat => cat.id === product.categoryId);
+            const categoryName = category ? category.name : 'Uncategorized';
+
+            console.log('Product:', product.name, 'Category ID:', product.categoryId, 'Category Name:', categoryName);
+
+            const productCard = document.createElement('div');
+            productCard.className = 'collection-card';
+            productCard.setAttribute('data-category', categoryName);
+
+            productCard.innerHTML = `
+                <div class="collection-thumbnail">
+                    <img src="${product.imageUrl || '/images/placeholder.jpg'}" alt="${product.name}"/>
+                </div>
+                <div class="card-content">
+                    <span class="card-badge">New Arrival</span>
+                    <h3 class="card-title">${product.name}</h3>
+                    <p class="card-subtitle">${product.description}</p>
+                    <p class="card-price">$${product.price}</p>
+                    <button class="add-to-cart-btn"
+                            data-id="${product.id}"
+                            data-name="${product.name}"
+                            data-price="${product.price}"
+                            data-image="${product.imageUrl || '/images/placeholder.jpg'}"
+                            style="margin-top:10px;padding:8px 16px;background-color:#ff3366;color:#fff;border:none;border-radius:4px;cursor:pointer">
+                        Add to Cart
+                    </button>
+                </div>
+            `;
+
+            collectionsGrid.appendChild(productCard);
+        });
     }
 
     // Example function to add to cart
@@ -251,12 +337,118 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Checkout button
     document.getElementById('checkout-btn').addEventListener('click', function() {
-        alert('Checkout functionality would be implemented here!');
+        if (cart.length === 0) {
+            alert('Your cart is empty!');
+            return;
+        }
+
+        // First check if user is authenticated
+        checkAuthentication().then(isAuthenticated => {
+            if (!isAuthenticated) {
+                const loginConfirmed = confirm('You must be logged in with Google to checkout. Would you like to login now?');
+                if (loginConfirmed) {
+                    window.location.href = '/oauth2/authorization/google';
+                }
+                return;
+            }
+
+            // Get user email from authentication status
+            getUserInfo().then(userInfo => {
+                const userEmail = userInfo.email || 'guest@example.com';
+
+                // Prepare checkout data
+                const checkoutData = {
+                    cartItems: cart,
+                    userEmail: userEmail
+                };
+
+                // Call checkout API
+                fetch('/api/checkout', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: 'same-origin', // Include authentication cookies
+                    body: JSON.stringify(checkoutData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.orderId) {
+                        // Clear cart
+                        cart = [];
+                        saveCart();
+                        renderCart();
+
+                        // Redirect to payment page with order details
+                        window.location.href = `/payment?orderId=${data.orderId}&totalAmount=${data.totalAmount}`;
+                    } else {
+                        alert('Checkout failed: ' + (data.error || 'Unknown error'));
+                    }
+                })
+                .catch(error => {
+                    console.error('Error during checkout:', error);
+                    alert('Checkout failed. Please try again.');
+                });
+            });
+        });
     });
 
     // Initialize cart display
     renderCart();
 
-    // Load products on page load
-    loadProducts();
+    // Check authentication status and update UI
+    function checkAuthStatus() {
+        fetch('/api/auth/status')
+            .then(response => response.json())
+            .then(data => {
+                if (data.authenticated) {
+                    // Show user profile section
+                    document.getElementById('login-section').style.display = 'none';
+                    document.getElementById('user-section').style.display = 'block';
+
+                    // Update user info
+                    document.getElementById('user-name').textContent = data.name || 'User';
+                    document.getElementById('user-avatar').src = data.imageUrl || '/images/default-avatar.png';
+
+                    console.log('User authenticated:', data.name, data.email);
+                } else {
+                    // Show login section
+                    document.getElementById('login-section').style.display = 'block';
+                    document.getElementById('user-section').style.display = 'none';
+
+                    console.log('User not authenticated');
+                }
+            })
+            .catch(error => {
+                console.error('Error checking auth status:', error);
+                // Default to showing login
+                document.getElementById('login-section').style.display = 'block';
+                document.getElementById('user-section').style.display = 'none';
+            });
+    }
+
+    // Authentication helper functions
+    function checkAuthentication() {
+        return fetch('/api/auth/status')
+            .then(response => response.json())
+            .then(data => data.authenticated === true)
+            .catch(error => {
+                console.error('Error checking authentication:', error);
+                return false;
+            });
+    }
+
+    function getUserInfo() {
+        return fetch('/api/auth/status')
+            .then(response => response.json())
+            .then(data => data)
+            .catch(error => {
+                console.error('Error getting user info:', error);
+                return { email: 'guest@example.com' };
+            });
+    }
+
 });
+
+
+

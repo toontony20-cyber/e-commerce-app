@@ -157,3 +157,10 @@ application-*.yaml
 
 # Spring Boot
 spring.log
+
+# Application configuration with secrets
+src/main/resources/application.properties
+application.properties
+
+# Sensitive test data
+src/main/resources/data/users.json

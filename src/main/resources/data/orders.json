@@ -1,0 +1,26 @@
+[
+  {
+    "userEmail": "john.doe@example.com",
+    "orderDate": "2024-01-15T10:30:00.000+00:00",
+    "totalAmount": 999.99,
+    "status": "completed",
+    "shippingAddress": "123 Main St, New York, NY",
+    "paymentMethod": "credit_card"
+  },
+  {
+    "userEmail": "jane.smith@example.com",
+    "orderDate": "2024-01-16T14:20:00.000+00:00",
+    "totalAmount": 1299.99,
+    "status": "pending",
+    "shippingAddress": "456 Oak Ave, Los Angeles, CA",
+    "paymentMethod": "paypal"
+  },
+  {
+    "userEmail": "bob.johnson@example.com",
+    "orderDate": "2024-01-17T09:15:00.000+00:00",
+    "totalAmount": 149.99,
+    "status": "shipped",
+    "shippingAddress": "789 Pine Rd, Chicago, IL",
+    "paymentMethod": "credit_card"
+  }
+]

@@ -26,6 +26,19 @@
                 <li><a href="#home" class="nav-link active">Home</a></li>
                 <li><a href="#collections" class="nav-link">Collections</a></li>
                 <li><a href="#shopping-cart" class="nav-cta">Shopping Cart</a></li>
+                <li id="login-section">
+                    <a href="/oauth2/authorization/google" class="nav-cta google-login-btn" style="background: #4285f4; margin-left: 10px;">Login with Google</a>
+                </li>
+                <li id="user-section" style="display: none;">
+                    <div class="user-profile" style="display: flex; align-items: center; gap: 10px; color: white;">
+                        <img id="user-avatar" src="" alt="Profile" style="width: 32px; height: 32px; border-radius: 50%; border: 2px solid white;">
+                        <div style="display: flex; flex-direction: column; align-items: flex-start;">
+                            <span id="user-name" style="font-size: 14px; font-weight: 500;"></span>
+                            <a href="/orders" style="color: #ff3366; font-size: 12px; text-decoration: none; margin-top: 2px;">Order History</a>
+                        </div>
+                        <a href="/logout" class="nav-cta" style="background: #dc3545; margin-left: 10px; padding: 8px 16px; font-size: 12px;">Logout</a>
+                    </div>
+                </li>
             </ul>
             <div class="menu-toggle " id="menuToggle">
                 <span></span>
@@ -107,107 +120,10 @@
             <p class="section-subtitle">Discover our curated selection</p>
         </div>
         <div class="category-tabs">
-            <button class="tab-btn active">All</button>
-            <button class="tab-btn ">Phones</button>
-            <button class="tab-btn ">Computers</button>
+            <!-- Category buttons will be dynamically loaded here -->
         </div>
         <div class="grid" id="collectionsGrid">
-            <div class="collection-card" data-category="computers">
-                <div class="collection-thumbnail">
-                    <img src="/images/imac.jpg" alt="IMAC"/>
-                </div>
-                <div class="card-content">
-                    <span class="card-badge">New Arrival</span>
-                    <h3 class="card-title">IMAC</h3>
-                    <p class="card-subtitle">Apple personal computer</p>
-                    <p class="card-price">$<!-- -->999</p>
-                    <button class="add-to-cart-btn" data-id="imac" data-name="IMAC" data-price="999" data-image="/images/imac.jpg" style="margin-top:10px;padding:8px 16px;background-color:#ff3366;color:#fff;border:none;border-radius:4px;cursor:pointer">Add to Cart</button>
-                </div>
-            </div>
-            <div class="collection-card" data-category="computers">
-                <div class="collection-thumbnail">
-                    <img src="/images/dell.jfif" alt="DELL"/>
-                </div>
-                <div class="card-content">
-                    <span class="card-badge">Limited</span>
-                    <h3 class="card-title">DELL</h3>
-                    <p class="card-subtitle">dell personal computer</p>
-                    <p class="card-price">$<!-- -->499</p>
-                    <button class="add-to-cart-btn" data-id="dell" data-name="DELL" data-price="499" data-image="/images/dell.jfif" style="margin-top:10px;padding:8px 16px;background-color:#ff3366;color:#fff;border:none;border-radius:4px;cursor:pointer">Add to Cart</button>
-                </div>
-            </div>
-            <div class="collection-card" data-category="computers">
-                <div class="collection-thumbnail">
-                    <img src="/images/raspberry-pi.webp" alt="RASPBERRY PI"/>
-                </div>
-                <div class="card-content">
-                    <span class="card-badge">Bestseller</span>
-                    <h3 class="card-title">RASPBERRY PI</h3>
-                    <p class="card-subtitle">Raspberry Pi single-board computer</p>
-                    <p class="card-price">$<!-- -->399</p>
-                    <button class="add-to-cart-btn" data-id="raspberry-pi" data-name="RASPBERRY PI" data-price="399" data-image="/images/raspberry-pi.webp" style="margin-top:10px;padding:8px 16px;background-color:#ff3366;color:#fff;border:none;border-radius:4px;cursor:pointer">Add to Cart</button>
-                </div>
-            </div>
-            <div class="collection-card" data-category="computers">
-                <div class="collection-thumbnail">
-                    <img src="/images/qpc.jpg" alt="FRAUD COMPUTER"/>
-                </div>
-                <div class="card-content">
-                    <span class="card-badge">Trending</span>
-                    <h3 class="card-title">FRAUD COMPUTER</h3>
-                    <p class="card-subtitle">A computer that looks like it could work</p>
-                    <p class="card-price">$<!-- -->999999</p>
-                    <button class="add-to-cart-btn" data-id="qpc" data-name="FRAUD COMPUTER" data-price="999999" data-image="/images/qpc.jpg" style="margin-top:10px;padding:8px 16px;background-color:#ff3366;color:#fff;border:none;border-radius:4px;cursor:pointer">Add to Cart</button>
-                </div>
-            </div>
-            <div class="collection-card" data-category="phones">
-                <div class="collection-thumbnail">
-                    <img src="/images/huawei.jpg" alt="HUAWEI"/>
-                </div>
-                <div class="card-content">
-                    <span class="card-badge">Pre-Order</span>
-                    <h3 class="card-title">HUAWEI</h3>
-                    <p class="card-subtitle">Huawei smartphone</p>
-                    <p class="card-price">$<!-- -->249</p>
-                    <button class="add-to-cart-btn" data-id="huawei" data-name="HUAWEI" data-price="249" data-image="/images/huawei.jpg" style="margin-top:10px;padding:8px 16px;background-color:#ff3366;color:#fff;border:none;border-radius:4px;cursor:pointer">Add to Cart</button>
-                </div>
-            </div>
-            <div class="collection-card" data-category="phones">
-                <div class="collection-thumbnail">
-                    <img src="/images/samsung.jpg" alt="SAMSUNG"/>
-                </div>
-                <div class="card-content">
-                    <span class="card-badge">Hot</span>
-                    <h3 class="card-title">SAMSUNG</h3>
-                    <p class="card-subtitle">Samsung smartphone</p>
-                    <p class="card-price">$<!-- -->199</p>
-                    <button class="add-to-cart-btn" data-id="samsung" data-name="SAMSUNG" data-price="199" data-image="/images/samsung.jpg" style="margin-top:10px;padding:8px 16px;background-color:#ff3366;color:#fff;border:none;border-radius:4px;cursor:pointer">Add to Cart</button>
-                </div>
-            </div>
-            <div class="collection-card" data-category="phones">
-                <div class="collection-thumbnail">
-                    <img src="/images/nokia.png" alt="NOKIA"/>
-                </div>
-                <div class="card-content">
-                    <span class="card-badge">Exclusive</span>
-                    <h3 class="card-title">NOKIA</h3>
-                    <p class="card-subtitle">Art Meets Fashion</p>
-                    <p class="card-price">$<!-- -->99</p>
-                    <button class="add-to-cart-btn" data-id="nokia" data-name="NOKIA" data-price="99" data-image="/images/nokia.png" style="margin-top:10px;padding:8px 16px;background-color:#ff3366;color:#fff;border:none;border-radius:4px;cursor:pointer">Add to Cart</button>
-                </div>
-            </div>
-            <div class="collection-card" data-category="phones">
-                <div class="collection-thumbnail">
-                    <img src="/images/iphone.jfif" alt="IPHONE"/>
-                </div>
-                <div class="card-content">
-                    <span class="card-badge">Essentials</span>
-                    <h3 class="card-title">IPHONE</h3>
-                    <p class="card-subtitle">Timeless Accessories</p>
-                    <p class="card-price">$<!-- -->89</p>
-                    <button class="add-to-cart-btn" data-id="iphone" data-name="IPHONE" data-price="89" data-image="/images/iphone.jfif" style="margin-top:10px;padding:8px 16px;background-color:#ff3366;color:#fff;border:none;border-radius:4px;cursor:pointer">Add to Cart</button>
-                </div>
-            </div>
+            <!-- Product cards will be dynamically loaded here -->
         </div>
     </section>
     <section class="shopping-cart" id="shopping-cart" style="padding:40px 20px;background-color:#f5f5f5;min-height:400px">
@@ -286,3 +202,5 @@
     <script src="/js/app.js"></script>
 </body>
 </html>
+</html>
+                    <button class="add-to-cart-btn" data-id="nokia" data-name="NOKIA" data-price="99" data-image="/images/nokia.png" style="margin-top:10px;padding:8px 16px;background-color:#ff3366;color:#fff;border:none;border-radius:4px;cursor:pointer">Add to Cart</button>

@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Smartphones",
+    "description": "Mobile phones and smartphones"
+  },
+  {
+    "name": "Laptops",
+    "description": "Portable computers and laptops"
+  },
+  {
+    "name": "Computers",
+    "description": "Desktop computers and accessories"
+  },
+  {
+    "name": "Feature Phones",
+    "description": "Basic mobile phones"
+  }
+]

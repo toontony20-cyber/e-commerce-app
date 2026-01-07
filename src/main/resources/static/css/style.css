@@ -873,7 +873,6 @@ nav.scrolled {
 	border: 1px solid var(--text-muted);
 	color: var(--text-muted);
 	cursor: pointer;
-	text-transform: uppercase;
 	letter-spacing: 2px;
 	transition: all 0.3s ease;
 	font-size: 12px;

@@ -1,0 +1,32 @@
+# Server Configuration
+server.port=8080
+
+# MongoDB Configuration
+spring.data.mongodb.uri=mongodb://localhost:27017/ecommerce
+spring.data.mongodb.database=ecommerce
+
+# OAuth2 Configuration for Google
+# Get these from: https://console.cloud.google.com/
+# 1. Go to APIs & Credentials → OAuth 2.0 Client IDs
+# 2. Create or select your client
+# 3. Copy the Client ID and Client Secret
+spring.security.oauth2.client.registration.google.client-id=YOUR_GOOGLE_CLIENT_ID
+spring.security.oauth2.client.registration.google.client-secret=YOUR_GOOGLE_CLIENT_SECRET
+spring.security.oauth2.client.registration.google.scope=profile,email
+spring.security.oauth2.client.registration.google.redirect-uri=http://localhost:8080/login/oauth2/code/google
+
+# OAuth2 Provider Configuration (usually don't need to change these)
+spring.security.oauth2.client.provider.google.authorization-uri=https://accounts.google.com/o/oauth2/auth
+spring.security.oauth2.client.provider.google.token-uri=https://oauth2.googleapis.com/token
+spring.security.oauth2.client.provider.google.user-info-uri=https://www.googleapis.com/oauth2/v2/userinfo
+spring.security.oauth2.client.provider.google.user-name-attribute=id
+
+# PayPal Configuration
+# Get these from: https://developer.paypal.com/
+# 1. Go to Dashboard → My Apps & Credentials
+# 2. Create or select your app
+# 3. Copy the Client ID and Client Secret
+# 4. Use 'sandbox' for testing, 'live' for production
+paypal.client-id=YOUR_PAYPAL_CLIENT_ID
+paypal.client-secret=YOUR_PAYPAL_CLIENT_SECRET
+paypal.mode=sandbox
